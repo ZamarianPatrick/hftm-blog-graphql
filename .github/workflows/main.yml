@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ${PACKAGE_NAME} -f ${DOCKERFILE_PATH} .
+        run: docker build -t ghcr.io/${GITHUB_REPOSITORY,,}/${IMAGE_NAME}:${IMAGE_VERSION} -f ${DOCKERFILE_PATH} .
 
       - name: Push Docker image to GitHub Packages
         run: docker push ${PACKAGE_NAME}
