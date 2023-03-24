@@ -46,7 +46,7 @@ jobs:
           password: ${{ secrets.TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ${GITHUB_PACKAGE_REGISTRY}/zamarianpatrick/${GITHUB_REPOSITORY#*/}/${IMAGE_NAME}:${IMAGE_VERSION} -f ${DOCKERFILE_PATH} .
+        run: docker build -t ${GITHUB_PACKAGE_REGISTRY}/zamarianpatrick/${GITHUB_REPOSITORY#*/}:${IMAGE_VERSION} -f ${DOCKERFILE_PATH} .
 
       - name: Push Docker image to GitHub Packages
-        run: docker push ${GITHUB_PACKAGE_REGISTRY}/zamarianpatrick/${GITHUB_REPOSITORY#*/}/${IMAGE_NAME}:${IMAGE_VERSION}
+        run: docker push ${GITHUB_PACKAGE_REGISTRY}/zamarianpatrick/${GITHUB_REPOSITORY#*/}:${IMAGE_VERSION}
