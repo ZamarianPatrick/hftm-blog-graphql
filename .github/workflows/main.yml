@@ -7,7 +7,7 @@ on:
 env:
   IMAGE_NAME: blog-graphql
   IMAGE_VERSION: latest
-  DOCKERFILE_PATH: ./Dockerfile
+  DOCKERFILE_PATH: ./src/main/docker/Dockerfile.jvm
   GITHUB_PACKAGE_REGISTRY: ghcr.io
   GITHUB_REPOSITORY: ZamarianPatrick/hftm-blog-graphql
   PACKAGE_NAME: ${GITHUB_PACKAGE_REGISTRY}/${GITHUB_REPOSITORY}/${IMAGE_NAME}:${IMAGE_VERSION}
