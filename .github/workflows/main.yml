@@ -44,6 +44,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.TOKEN }}
 
+      - name: Print package name
+        run: "echo Package name: $PACKAGE_NAME"
+
       - name: Build Docker image
         run: docker build -t ${PACKAGE_NAME} -f ${DOCKERFILE_PATH} .
 
