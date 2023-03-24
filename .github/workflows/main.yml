@@ -10,7 +10,6 @@ env:
   DOCKERFILE_PATH: ./src/main/docker/Dockerfile.jvm
   GITHUB_PACKAGE_REGISTRY: ghcr.io
   GITHUB_REPOSITORY: zamarianpatrick/hftm-blog-graphql
-  PACKAGE_NAME: ${GITHUB_PACKAGE_REGISTRY}/${GITHUB_REPOSITORY}/${IMAGE_NAME}:${IMAGE_VERSION}
 
 jobs:
   build-and-deploy:
@@ -44,11 +43,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.TOKEN }}
 
-      - name: Print package name
-        run: "echo Package name: $PACKAGE_NAME"
-
       - name: Build Docker image
-        run: docker build -t ${PACKAGE_NAME} -f ${DOCKERFILE_PATH} .
+        run: docker build -t ${GITHUB_PACKAGE_REGISTRY}/${GITHUB_REPOSITORY}/${IMAGE_NAME}:${IMAGE_VERSION} -f ${DOCKERFILE_PATH} .
 
       - name: Push Docker image to GitHub Packages
-        run: docker push ${PACKAGE_NAME}
+        run: docker push ${GITHUB_PACKAGE_REGISTRY}/${GITHUB_REPOSITORY}/${IMAGE_NAME}:${IMAGE_VERSION}
